@@ -5,9 +5,9 @@
 }
 
 .app {
-  background-color: #041C32;
+background-color:#D3E4CD ;
   background-size:100px;
-  background-position: bottom;
+  background-position:center;
 
 }
 
@@ -32,15 +32,18 @@ main {
   display: block;
   width: 100%;
   padding: 15px;
-  background: none;
+  height: 20px;
+  background-color: #83AFA6;
   appearance: none;
-  opacity:100;
+  opacity:80;
+  
   
 
   color: #313131;
   font-size: 15px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 8px 8px 8px 8px;
+  box-shadow:0px 5px rgba(0, 0,0, 0.2);
 
 
 }
