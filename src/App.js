@@ -22,7 +22,7 @@ function App() {
         <div className='search-box'>
           <input type="text"
             className='search-bar'
-            placeholder='Search Coin'
+            placeholder='Search Coins'
           // onChange={e=>fonksiyon(e.target.value)}
           // value={query}
           // onKeyPress={search}
@@ -46,7 +46,7 @@ function App() {
       </main>
 
 
-
+1M
 
     </div>
   );
