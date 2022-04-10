@@ -5,7 +5,7 @@
 }
 
 .app {
-  background-color: #83AFA6;
+  
   background-size:100px;
   background-position:center;
 
@@ -16,8 +16,8 @@ body {
 }
 
 main {
-  height: 200px;
-  width: 200px;
+  height: 3-200px;
+  width: 300px;
 }
 
 .search-box {
@@ -51,3 +51,5 @@ main {
 .search-bar.search-box :focus {
   background-color: rgba(255, 255, 255, 0.75);
 }
+
+
