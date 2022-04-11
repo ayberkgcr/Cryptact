@@ -15,6 +15,11 @@ const api = {
   base: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids="
 }
 function App() {
+  
+  
+  
+  
+  
   //Use State ********************************************************************************************************************
   const [query, setQuery] = useState('');
   const [coins, setCoins] = useState([]);
@@ -22,6 +27,11 @@ function App() {
   //Use State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
+  
+  
+  
+  
+  
   //Arama  ********************************************************************************************************************
 
   const search = evt => {
@@ -47,6 +57,10 @@ function App() {
       <main>
 
 
+        
+        
+        
+        
         {/* //Search Box XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
         <div className='search-box'>
           <input type="text"
@@ -62,31 +76,14 @@ function App() {
         {/* SearchBox XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
 
+        
+        
+        
+        
         {/* Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
-
-        {/* <ListGroup className=''  as="ul">
-          <ListGroup.Item as="li" disabled>
-            Coin Name               :{coins.name}
-          </ListGroup.Item>
-          <ListGroup.Item as="li"> 
-          Symbol            : {coins.symbol}
-          </ListGroup.Item>
-          <ListGroup.Item as="li">
-            Coin Gecko Rank : {coins.market_cap_rank}
-          </ListGroup.Item>
-          
-          <ListGroup.Item as="li"> 
-          Community Score: {coins.community_score}
-          </ListGroup.Item>
-          
-        </ListGroup> */}
-
-        {/*Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
-
-
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" />
+          <Card.Img className='coinIcon' variant="top" src={coins.image}  />
           <Card.Body>
             <Card.Title>{coins.name}</Card.Title>
             <Card.Text>
@@ -94,11 +91,11 @@ function App() {
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Coin Gecko Rank : {coins.image}</ListGroupItem>
+            <ListGroupItem>Coin Name : {coins.name} </ListGroupItem>
 
-            <ListGroupItem>Symbol            : {coins.symbol}</ListGroupItem>
-            <ListGroupItem>Community Score: {coins.community_score}</ListGroupItem>
-            <ListGroupItem>kat: {coins.description}  </ListGroupItem>
+            <ListGroupItem>Symbol      :      {coins.symbol}</ListGroupItem>
+            <ListGroupItem> Curent Price : {coins.current_price}</ListGroupItem>
+            <ListGroupItem>Market Cap   :  {coins.market_cap}  </ListGroupItem>
 
           </ListGroup>
           <Card.Body>
@@ -109,9 +106,7 @@ function App() {
 
 
 
-
-
-
+        {/*Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
 
 
