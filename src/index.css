@@ -5,9 +5,9 @@
 }
 
 .app {
-  
-  background-size:100px;
-  background-position:center;
+
+  background-size: 100px;
+  background-position: center;
 
 }
 
@@ -35,15 +35,15 @@ main {
   height: 20px;
   background-color: #83AFA6;
   appearance: none;
-  opacity:80;
-  
-  
+  opacity: 80;
+
+
 
   color: #313131;
   font-size: 15px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 8px 8px 8px 8px;
-  box-shadow:0px 5px rgba(0, 0,0, 0.2);
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
 
 
 }
@@ -51,10 +51,12 @@ main {
 .search-bar.search-box :focus {
   background-color: rgba(255, 255, 255, 0.75);
 }
-.coinIcon{
-  max-width: 50px;
-  max-height: 50px;
- 
-}
 
+.coinIcon {
+  max-width: 60px;
+  max-height: 60px;
+  padding-left: 10px;
+
+
+}
 

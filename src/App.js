@@ -1,25 +1,19 @@
 import './App.css';
-
 import React, { useState } from "react";
 import { ListGroup, Card, ListGroupItem } from 'react-bootstrap';
 
-// const linked={
-//   link:"https://www.coingecko.com/en/coins/"
 
-// }
-
-//https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=terra-luna&order=market_cap_desc&per_page=100&page=1&sparkline=false
 
 const api = {
   // base: "https://api.coingecko.com/api/v3/coins/"
   base: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids="
 }
 function App() {
-  
-  
-  
-  
-  
+
+
+
+
+
   //Use State ********************************************************************************************************************
   const [query, setQuery] = useState('');
   const [coins, setCoins] = useState([]);
@@ -27,11 +21,11 @@ function App() {
   //Use State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
-  
-  
-  
-  
-  
+
+
+
+
+
   //Arama  ********************************************************************************************************************
 
   const search = evt => {
@@ -57,10 +51,10 @@ function App() {
       <main>
 
 
-        
-        
-        
-        
+
+
+
+
         {/* //Search Box XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
         <div className='search-box'>
           <input type="text"
@@ -76,37 +70,38 @@ function App() {
         {/* SearchBox XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
 
-        
-        
-        
-        
+
+
+
+
         {/* Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
-        <Card style={{ width: '18rem' }}>
-          <Card.Img className='coinIcon' variant="top" src={coins.image}  />
-          <Card.Body>
-            <Card.Title>{coins.name}</Card.Title>
-            <Card.Text>
+        {(typeof coins.name != "undefined") ? (
 
-            </Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroupItem>Coin Name : {coins.name} </ListGroupItem>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img className='coinIcon' variant="top" src={coins.image} />
+            <Card.Body>
+              <Card.Title>{coins.name}</Card.Title>
+              <Card.Text>
 
-            <ListGroupItem>Symbol      :      {coins.symbol}</ListGroupItem>
-            <ListGroupItem> Curent Price : {coins.current_price}</ListGroupItem>
-            <ListGroupItem>Market Cap   :  {coins.market_cap}  </ListGroupItem>
+              </Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroupItem>Symbol      :      {coins.symbol} </ListGroupItem>
+              <ListGroupItem>Current Price : {coins.current_price}</ListGroupItem>
+              <ListGroupItem>Market Cap   :  {coins.market_cap}  </ListGroupItem>
+            </ListGroup>
+            <Card.Body>
+              <Card.Link href="https://www.coingecko.com/en/coins/"></Card.Link>
 
-          </ListGroup>
-          <Card.Body>
-            <Card.Link href="https://www.coingecko.com/en/coins/"></Card.Link>
+            </Card.Body>
+          </Card>
 
-          </Card.Body>
-        </Card>
-
+        ) : ('')}
 
 
         {/*Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
+
 
 
 
