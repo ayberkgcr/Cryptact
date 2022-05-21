@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
 import { ListGroup, Card, ListGroupItem } from 'react-bootstrap';
+import Popup from './popup';
 
 
 
@@ -11,15 +12,27 @@ const api = {
 function App() {
 
 
+  //POP UP *********************************
+  const [isOpen, setIsOpen] = useState(false);
 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+  //POP UP *********************************
 
 
   //Use State ********************************************************************************************************************
   const [query, setQuery] = useState('');
   const [coins, setCoins] = useState([]);
+  // const [trend, setTrend] = useState([]);
 
   //Use State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
+  // fetch(`https://api.coingecko.com/api/v3/search/trending`)
+  //   .then(res => res.json())
+  //   .then(sonuc => {
+  //     setTrend(sonuc);
+  //     console.log(sonuc);
+  //   });
 
 
 
@@ -37,7 +50,9 @@ function App() {
           setQuery('');
           console.log(result);
 
+
         });
+
     }
   }
   //Arama  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -49,7 +64,6 @@ function App() {
     <div className="app" >
 
       <main>
-
 
 
 
@@ -95,7 +109,22 @@ function App() {
               <Card.Link href="https://www.coingecko.com/en/coins/"></Card.Link>
 
             </Card.Body>
+            <input
+              type="button"
+              value="Risk Ratio"
+              onClick={togglePopup}
+            />
+            {isOpen && <Popup
+              content={<>
+                <b>Your risk ratio</b>
+                <p>{coins.market_cap}</p>
+                
+              </>}
+              handleClose={togglePopup}
+            />}
           </Card>
+
+
 
         ) : ('')}
 
