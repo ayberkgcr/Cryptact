@@ -118,7 +118,7 @@ function App() {
               content={<>
                 <b>Your risk ratio</b>
                 <p>{coins.market_cap}</p>
-                
+
               </>}
               handleClose={togglePopup}
             />}

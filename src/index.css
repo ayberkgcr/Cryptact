@@ -67,8 +67,9 @@ main {
   height: 100vh;
   top: 0;
   left: 0;
+  bottom: 10;
 }
- 
+
 .box {
   position: relative;
   width: 70%;
@@ -82,7 +83,7 @@ main {
   border: 1px solid #999;
   overflow: auto;
 }
- 
+
 .close-icon {
   content: 'x';
   cursor: pointer;
