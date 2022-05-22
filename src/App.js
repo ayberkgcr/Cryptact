@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from "react";
-import { ListGroup, Card, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, Card, ListGroupItem, Button } from 'react-bootstrap';
 import Popup from './popup';
 
 
@@ -10,6 +10,8 @@ const api = {
   base: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids="
 }
 function App() {
+
+
 
 
   //POP UP *********************************
@@ -27,12 +29,6 @@ function App() {
   // const [trend, setTrend] = useState([]);
 
   //Use State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  // fetch(`https://api.coingecko.com/api/v3/search/trending`)
-  //   .then(res => res.json())
-  //   .then(sonuc => {
-  //     setTrend(sonuc);
-  //     console.log(sonuc);
-  //   });
 
 
 
@@ -57,6 +53,8 @@ function App() {
   }
   //Arama  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+
+  let arz_oran = coins.total_supply / coins.circulating_supply;
 
   return (
 
@@ -92,32 +90,49 @@ function App() {
 
         {(typeof coins.name != "undefined") ? (
 
-          <Card style={{ width: '18rem' }}>
+          <Card style={{ width: '18rem', }}>
             <Card.Img className='coinIcon' variant="top" src={coins.image} />
             <Card.Body>
               <Card.Title>{coins.name}</Card.Title>
-              <Card.Text>
 
-              </Card.Text>
             </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>Symbol      :      {coins.symbol} </ListGroupItem>
-              <ListGroupItem>Current Price : {coins.current_price}</ListGroupItem>
-              <ListGroupItem>Market Cap   :  {coins.market_cap}  </ListGroupItem>
+            <ListGroup className="list-group-flush" >
+              <ListGroupItem >Symbol      :      {coins.symbol} </ListGroupItem>
+              <ListGroupItem>Current Price : {coins.current_price} $</ListGroupItem>
+              <ListGroupItem>Market Cap   :  {coins.market_cap} $  </ListGroupItem>
+              <Button as="input" type="button"
+                value=" Learn Risks and Advantages "
+                onClick={togglePopup} />
             </ListGroup>
-            <Card.Body>
-              <Card.Link href="https://www.coingecko.com/en/coins/"></Card.Link>
 
-            </Card.Body>
-            <input
-              type="button"
-              value="Risk Ratio"
-              onClick={togglePopup}
-            />
+
+
+
             {isOpen && <Popup
               content={<>
-                <b>Your risk ratio</b>
-                <p>{coins.market_cap}</p>
+
+                {coins.market_cap >= 10000000000 &&
+                  <h2>
+                    "Büyük Market Hacmi"
+                  </h2>
+                }
+                {coins.market_cap < 10000000000 &&
+                  <h2>
+                    Market Sıralaması düşük ,Güvenilir varlık olmayabilir.
+                  </h2>
+                }
+
+                {arz_oran = 1 &&
+                  <h2>
+                    Arz oranı güvenilir ,üretimden dolayı fiyat baskılanma ihtimali düşük
+                  </h2>
+                }
+                {arz_oran > 1 &&
+                  <h2>
+                    Arz oranı güvenilir değil ,üretimden dolayı fiyat baskılanma ihtimali yüksek
+                  </h2>
+                }
+
 
               </>}
               handleClose={togglePopup}
