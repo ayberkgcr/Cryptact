@@ -40,14 +40,21 @@ function App() {
   const search = evt => {
     if (evt.key === "Enter") {
       fetch(`${api.base}${query}&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
+
         .then(res => res.json())
+
         .then(result => {
           setCoins(result[0]);
           setQuery('');
           console.log(result);
 
 
+
+        })
+        .catch((error) => {
+          console.log(error)
         });
+      ;
 
     }
   }
@@ -143,6 +150,14 @@ function App() {
 
         ) : ('')}
 
+
+
+
+
+
+
+
+        <a href="https://www.coingecko.com">Check your Coin ID</a>
 
         {/*Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
