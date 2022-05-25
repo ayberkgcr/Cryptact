@@ -5,11 +5,14 @@ import Popup from './popup';
 
 
 
+
+
 const api = {
   // base: "https://api.coingecko.com/api/v3/coins/"
   base: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids="
 }
 function App() {
+
 
   const [show, setShow] = useState(false);
 
@@ -26,19 +29,19 @@ function App() {
   //POP UP *********************************
 
 
-  //Use State ********************************************************************************************************************
+  // UseState ile input alanına yazılan değeri tutar ********************************************************************************************************************
   const [query, setQuery] = useState('');
   const [coins, setCoins] = useState([]);
   // const [trend, setTrend] = useState([]);
 
-  //Use State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  //UseState ile input alanına yazılan değeri tutar  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 
 
 
 
-  //Arama  ********************************************************************************************************************
+  // Fetch Api ile api a  use state ile tutulan veri ile istek gönderir ve dönen veriyi State ile tutar ********************************************************************************************************************
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -59,7 +62,12 @@ function App() {
 
     }
   }
-  //Arama  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  //Fetch Api ile api a  use state ile tutulan veri ile istek gönderir ve dönen veriyi State ile tutar  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+
+
 
 
   let arz_oran = coins.total_supply / coins.circulating_supply;
@@ -76,7 +84,7 @@ function App() {
 
 
 
-        {/* //Search Box XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
+        {/* // Coin ID ile arama kutusu XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
         <div className='search-box'>
           <input type="text"
             className='search-bar'
@@ -88,16 +96,21 @@ function App() {
 
           />
         </div>
-        {/* SearchBox XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
+        {/* Coin ID ile arama kutusu XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
 
 
 
 
 
-        {/* Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
+        {/* Arama yapılmış coinin bilgilerini ve butonları  Card içinde List olarak gösterir.Arama yapılmadan gözükmez ara yapıldıktan sonra ortaya çıkar. XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
 
         {(typeof coins.name != "undefined") ? (
+
+
+          //  Coininin anlık teknik bilgileri Card içinde gözükür
+
+
 
           <Card className="w-100" style={{ width: '18rem', }}>
             <Card.Img className='coinIcon ' variant="top" src={coins.image} />
@@ -111,9 +124,19 @@ function App() {
               <ListGroupItem>  Price Change Percentage   :  %{coins.price_change_percentage_24h} </ListGroupItem>
               <ListGroupItem>Market Cap   :  {coins.market_cap} $  </ListGroupItem>
 
+
+              {/* Risk ve avantajları popupuna ulaşmamız için gerekli buton */}
+
               <Button className="mb-2" variant="success" as="input" type="button"
                 value=" Learn Risks and Advantages "
                 onClick={togglePopup} />
+
+              {/* Risk ve avantajları popupuna ulaşmamız için gerekli buton */}
+
+
+
+
+              {/* Risk iştahı öğrenme popupı bbu testi kullanıcı kend ipuanlıyarak yüksek riske uygun olup olmadığını öğrenir  */}
 
               <Button className="mb-2" variant="outline-warning" onClick={handleShow}>
                 Learn Your 	Risk Appetite
@@ -178,10 +201,12 @@ function App() {
                 </Modal.Footer>
               </Modal>
 
+              {/* Risk iştahı öğrenme popupı bbu testi kullanıcı kend ipuanlıyarak yüksek riske uygun olup olmadığını öğrenir  */}
+
             </ListGroup>
 
 
-
+            {/* Risk ve avantajları popupuı ilgili butona tıkladıktan sonra kullanıcı varlığın çelşitli parametreler ile bulunmuş risk ve avantajlarını öğrenir */}
 
             {isOpen && <Popup
               content={<>
@@ -239,6 +264,7 @@ function App() {
                   </li>
                 }
 
+                {/* Risk ve avantajları popupuı ilgili butona tıkladıktan sonra kullanıcı varlığın çelşitli parametreler ile bulunmuş risk ve avantajlarını öğrenir */}
 
 
               </>}
@@ -262,12 +288,13 @@ function App() {
 
 
 
+        {/* Kullanıcı aramak istediği varlığın id sini bilmiyorsa bu buton ile öğrenebilir.*/}
 
 
         <Button className=' w-100' variant="outline-warning" size="sm" href="https://www.coingecko.com">Click if you don't know the coin ID</Button>
 
 
-        {/*Searched Coin Data List XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
+
 
 
 
